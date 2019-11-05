@@ -21,19 +21,20 @@ int main()
 {
     
     vector<players> baseList;
-    
+   // created file stream to open data from baseball stats 
     ifstream inFile;
     inFile.open("BStats.csv");
     
     
    
-    
+   // reading in the line 
     while (inFile) {
         string player_line;
         inFile >> player_line;
         istringstream ss(player_line);
     {
-       while(ss)
+     //adding from the line into temporary values  
+        while(ss)
        {
         getline(ss, team_name, ',');
         getline(ss, jersey_num, ',');
@@ -52,7 +53,7 @@ int main()
         getline(ss, t_OPS, ',');
         getline(ss, t_ERA, ',');
         getline(ss, pos, ',');
-  
+  // pushing players into vector created
         players.push_back(temp);
        }
     }
