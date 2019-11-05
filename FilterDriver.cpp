@@ -19,16 +19,39 @@ void printHeading();
 
 int main()
 {
-    ifstream baseIn("BStats.csv");
-    vector<string> List;
-    string holder;
+    
+    vector<players> baseList;
+    
+    ifstream inFile;
+    inFile.open("BStats.csv");
+    
+    
+   
+    
     while (baseIn.eof() == 0)
     {
-        getline(baseIn, holder);
-        List.push_back(holder);
+        getline(ss, team_name, ',');
+        getline(ss, jersey_num, ',');
+        getline(ss, fname, ',');
+        getline(ss, lname, ',');
+        getline(ss, b_year, ',');
+        getline(ss, b_month, ',');
+        getline(ss, b_day, ',');
+        getline(ss, batArm, ',');
+        getline(ss, throwArm, ',');
+        getline(ss, Atbats, ',');
+        getline(ss, batAvg, ',');
+        getline(ss, t_HR, ',');
+        getline(ss, t_RBI, ',');
+        getline(ss, t_SB, ',');
+        getline(ss, t_OPS, ',');
+        getline(ss, t_ERA, ',');
+        getline(ss, pos, ',');
+  
+    
     }
     
-    
+    players.push_back(temp);
     
     return 0;
 }
