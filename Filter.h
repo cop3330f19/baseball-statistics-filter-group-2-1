@@ -1,24 +1,15 @@
-
 #ifndef FILTER_H
 #define FILTER_H
-
-
 #include "BaseballStatistic.h"
 #include <string>
 #include <vector>
+using namespace std;
+class Filter {
 
+  public: // vectors
+  static void swap(vector<BaseballStatistic>&, int, int); // swap function
+  static void namesort(vector<BaseballStatistic>&); //sorts names  
+  static int search(vector<BaseballStatistic>&, std::string, std::string, std::string, std::string); // search and recursion
 
-
-class Filter
-{
-   public:
-   
-   static void swap(vector<BaseballStatistic>&,int,int);
-   
-   static void namesort(vector<BaseballStatistic>&);
-   
-   static int search(vctor<BaseballStatistic>&,std::string, std::string, std::string);
-   
-         
 };
 #endif
