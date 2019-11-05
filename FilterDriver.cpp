@@ -9,6 +9,14 @@
 
 using namespace std;
 
+void swap(int, int, vector<BaseballStatistic>&);
+void sort(vector<BaseballStatistic>&);
+int search(vector<BaseballStatistic>, string, string);
+void loadFile(vector<BaseballStatistic>&);
+void printHeading();
+
+
+
 int main()
 {
     ifstream baseIn("BStats.csv");
