@@ -28,8 +28,13 @@ int main()
     
    
     
-    while (baseIn.eof() == 0)
+    while (inFile) {
+        string player_line;
+        inFile >> player_line;
+        istringstream ss(player_line);
     {
+       while(ss)
+       {
         getline(ss, team_name, ',');
         getline(ss, jersey_num, ',');
         getline(ss, fname, ',');
@@ -48,10 +53,11 @@ int main()
         getline(ss, t_ERA, ',');
         getline(ss, pos, ',');
   
-    
+        players.push_back(temp);
+       }
     }
     
-    players.push_back(temp);
+   
     
     return 0;
 }
