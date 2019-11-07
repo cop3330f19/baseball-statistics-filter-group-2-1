@@ -28,91 +28,90 @@ BaseballStatistic::BaseballStatistic(string fN, string lN, string pos, int jNum,
     dob = new Date(by, bm, bd);
 }
 
-void setFirstName(string fName)
+void BaseballStatistic::setFirstName(string fName)
 {firstName = fName;}
 
-void setLastName(string lName)
+void BaseballStatistic::setLastName(string lName)
 {lastName = lName;}
 
-void setTeamName(string tName)
+void BaseballStatistic::setTeamName(string tName)
 {teamName = tName;}
 
-void setJerseyNum(int jNumb)
+void BaseballStatistic::setJerseyNum(int jNumb)
 {jerseyNum = jNumb;}
 
-void setPosition(string pos)
+void BaseballStatistic::setPosition(string pos)
 {position = pos;}
 
-void setBatting(char bat)
+void BaseballStatistic::setBatting(char bat)
 {batting = bat;}
 
-void setThrowing(char thro)
+void BaseballStatistic::setThrowing(char thro)
 {throwing = thro;}
 
-void setAtBats(int aBats)
+void BaseballStatistic::setAtBats(int aBats)
 {atBats = aBats;}
 
-void setBattingAverage(double bAvg)
+void BaseballStatistic::setBattingAverage(double bAvg)
 {battingAverage = bAvg;}
 
-void setHR(int homeR)
+void BaseballStatistic::setHR(int homeR)
 {hr = homeR;}
 
-void setRBI(int runsBI)
+void BaseballStatistic::setRBI(int runsBI)
 {rbi = runsBI;}
 
-void setSB(int sBat)
+void BaseballStatistic::setSB(int sBat)
 {sb = sBat;}
 
-void setOPS(double op)
+void BaseballStatistic::setOPS(double op)
 {ops = op;}
 
-void setERA(double er)
+void BaseballStatistic::setERA(double er)
 {era = er;}
 
-getFirstName()const
+string BaseballStatistic::getFirstName()const
 {return firstName;}
-
-string getLastName()const
+string BaseballStatistic::getLastName()const
 {return lastName;}
 
-sring getTeamName()const
+string BaseballStatistic::getTeamName()const
 {return teamName;}
 
-int getJerseyNum()const
+int BaseballStatistic::getJerseyNum()const
 {return jerseyNum;}
 
-string getPosition()const
+string BaseballStatistic::getPosition()const
 {return position;}
 
-int getAge()const
-{}
     
-char getBatting()const
+char BaseballStatistic::getBatting()const
 {return batting;}
 
-char getThrowing()const
+char BaseballStatistic::getThrowing()const
 {return throwing;}
 
-int getAtBats()const
+int BaseballStatistic::getAtBats()const
 {return atBats;}
 
-double getBattingAverage()const
+double BaseballStatistic::getBattingAverage()const
 {return battingAverage;}
 
-int getHR()const
+int BaseballStatistic::getHR()const
 {return hr;}
 
-int getRBI()const
+int BaseballStatistic::getRBI()const
 {return rbi;}
 
-int getSB()const
+int BaseballStatistic::getSB()const
 {return sb;}
 
-double getOPS()const
+double BaseballStatistic::getOPS()const
 {return ops;}
 
-double getERA()const
+double BaseballStatistic::getERA()const
 {return era;}
 
-void print()const
+void BaseballStatistic::print()const
+{}
+
