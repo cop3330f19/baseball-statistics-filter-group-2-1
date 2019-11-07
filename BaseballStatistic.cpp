@@ -115,3 +115,8 @@ double BaseballStatistic::getERA()const
 void BaseballStatistic::print()const
 {}
 
+int main()
+{
+    return 0;
+}
+
