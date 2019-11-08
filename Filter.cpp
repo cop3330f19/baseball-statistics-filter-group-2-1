@@ -1,67 +1,142 @@
 #include "Filter.h"
-	
+#include "BaseballStatistic.h"
+#include "StringHelper.h"
+#include "Date.h"
+#include <iostream>
+#include <string>
+#include <vector>
+#include <cstdlib>
 
-	using namespace std;
-	
+using namespace std;
 
-	static void FILTER::swap(vector<BaseballStatistic>& baseList, int oIdx, int nIdx){
-	    BaseballStatistic temp = baseList[oIdx]; //temporary variable to hold the old value during swap
-	    baseListList[oIdx] = baseListList[nIdx]; // assign the min_idx(element to be moved) to it's position
-	    baseListList[nIdx] = temp; //assign the element previously at the now sorted postion
-	}
-	
+//Swap Function
+void Filter::swap(vector<BaseballStatistic>& bList, int oIdx, int nIdx)
+  {
+    BaseballStatistic temp = bList[oIdx]; // //temporary baseball variable to hold the old value during swap
+    bList[oIdx] = bList[nIdx]; // assign the min_idx(element to be moved) to it's position
+    bList[nIdx] = temp; //assign the element previously at the now sorted postion
+  }
 
-	void namesort(vector<BaseballStatistic>& baseList){
-	    
-	     int i, j, min_idx; 
-	  
-	    // One by one move boundary of unsorted subarray 
-	    for (i = 0; i < baseList.size()-1; i++) 
-	    { 
-	        // Find the minimum element in unsorted array 
-	        min_idx = i; 
-	      
-	        
-	        for (j = i+1; j < baseList.size(); j++) 
-	          if (
-	              (baseList[j].getFName().compare(baseList[min_idx].getFName()) < 0)  //if getLName() @ j is < getLName() @ min_idx
-	              (
-	          ) 
-	              
-	            min_idx = j;
-	            
-	        // Swap the found minimum element with the first element 
-	        swap(baseList, min_idx, i);
-	       
-	       
-	    } 
-	}
-	            
-	static int FILTER::search(vector<BaseballStatistic> players, string fname, string lname, string p, string ){
-	  
-	  int lo = 0;
-	  int hi = players.size();
-	  
-	   while (lo <= hi) 
-	    { 
-	        int location = lo + (hi/2); 
-	  
-	        // Check if name is present at mid 
-	        if (players[location].getLName() == lname && players[location].getFName() == fname) 
-	            return location; 
-	  
-	        // If name greater, ignore left half 
-	        if (players[location].getLName() < lname 
-				|| (players[location].getLName() == lname && players[location].getFName() < fname)) 
-	            lo = location + 1; 
-	  
-	        // If name is smaller, ignore right half 
-	        else
-	            hi = location - 1; 
-	    } 
-	  
-	    // then element was not present 
-	    return -1; 
-	 
-	}
+// Search Function
+std::vector<BaseballStatistic> Filter::search(std::vector<BaseballStatistic>& bList, std::string key , std::string filter){
+    
+    bool valid;
+    vector<BaseballStatistic> result;
+    
+    for(int i = 0; i < bList.size(); i++)
+    { 
+        valid = false;
+        if(filter == "T"){
+            if(bList[i].getTeamName() == key)
+                valid = true;
+        }
+        else if(filter == "P"){
+            if(bList[i].getPosition() == key)
+                valid = true;
+        }
+        else if(filter == "B"){
+            if(bList[i].getBatting() == key[0])
+                valid = true;
+        }
+        else if(filter == "BA"){
+            if(bList[i].getBattingAverage() == atof(key.c_str()))
+                valid = true;
+        }
+        else if(filter == "H"){
+            if(bList[i].getHR() == atoi(key.c_str()))
+                valid = true;
+        }
+        else if(filter == "R"){
+            if(bList[i].getRBI() == atoi(key.c_str()))
+                valid = true;
+        }
+        else if(filter == "S"){
+            if(bList[i].getSB() == atoi(key.c_str()))
+                valid = true;
+        }
+        else if(filter == "O"){
+            if(bList[i].getOPS() == atoi(key.c_str()))
+                valid = true;
+        }
+        else if(filter == "E"){
+            if(bList[i].getERA() == atoi(key.c_str()))
+                valid = true;
+        }
+        if(valid)
+           result.push_back(bList[i]);
+    }
+    return result;
+}
+
+
+
+
+//option 1 sort
+void Filter::namesort(vector<BaseballStatistic>& bList)
+{
+  
+  std::string firstName, lastName, teamName, position;
+	int jerseyNum, atBats, hr, rbi, sb;
+	char batting, throwing;
+	double battingAverage, ops,era;
+    int day, month, year;
+    
+    int i, j, min_idx; 
+    
+  
+  for (i = 0; i < bList.size()-1; i++) 
+  {
+
+        min_idx = i;     
+
+        for (j = i+1; j < bList.size(); j++) 
+           if (
+
+              (bList[j].getLastName().compare(bList[min_idx].getLastName()) < 0)
+             
+              || (bList[j].getLastName().compare(bList[min_idx].getLastName()) == 0 && bList[j].getFirstName().compare(bList[min_idx].getFirstName() ) < 0)
+
+             || (bList[j].getLastName().compare(bList[min_idx].getLastName()) == 0 && bList[j].getFirstName().compare(bList[min_idx].getFirstName()) == 0 && bList[j].getPosition() < bList[min_idx].getPosition()) 
+              )
+       
+
+            min_idx = j; 
+
+        swap(bList, min_idx, i);
+     
+      
+}
+}
+  //option 2 sort
+void Filter::teamsort(vector<BaseballStatistic>& bList)
+{
+
+	  int i, j, min_idx; 
+
+    for (i = 0; i < bList.size()-1; i++) 
+    { 
+
+        min_idx = i; 
+
+        
+        for (j = i+1; j < bList.size(); j++) 
+
+          if (
+
+             (bList[j].getTeamName().compare(bList[min_idx].getTeamName()) < 0)
+
+             || (bList[j].getTeamName().compare(bList[min_idx].getTeamName()) == 0 && bList[j].getJerseyNum() < bList[min_idx].getJerseyNum())
+
+              )
+
+		  min_idx = j; 
+
+      
+
+        swap(bList, min_idx, i);
+
+         } 
+}
+  
+
 
