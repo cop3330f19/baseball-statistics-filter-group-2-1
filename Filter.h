@@ -4,12 +4,14 @@
 #include <string>
 #include <vector>
 using namespace std;
-class Filter {
+class Filter{
 
   public: // vectors
-  static void swap(vector<BaseballStatistic>&, int, int); // swap function
-  static void namesort(vector<BaseballStatistic>&); //sorts names  
-  static int search(vector<BaseballStatistic>&, std::string, std::string, std::string, std::string); // search and recursion
-  static void teamsort(vector<BaseballStatistic>&);
+  void swap(vector<BaseballStatistic>&, int, int); // swap function
+  static std::vector<BaseballStatistic> search(std::vector<BaseballStatistic>&, std::string, std::string); // search and recursion     
+  void namesort(vector<BaseballStatistic>&); //sorts names  
+  void teamsort(vector<BaseballStatistic>&);
 };
+
 #endif
+
